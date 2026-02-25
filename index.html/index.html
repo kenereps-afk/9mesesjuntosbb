@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>9 Meses Juntos 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+.contenido {
+    position: relative;
+    z-index: 10;
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+#contador {
+    font-weight: 600;
+    margin: 15px 0;
+}
+
+.foto {
+    position: absolute;
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
+    z-index: 1;
+}
+
+.foto:hover {
+    transform: scale(1.1);
+}
+
+#img1 { top: 5%; left: 3%; }
+#img2 { top: 75%; left: 5%; }
+#img3 { top: 10%; right: 3%; }
+#img4 { bottom: 5%; right: 5%; }
+#img5 { top: 35%; left: 2%; }
+#img6 { top: 40%; right: 2%; }
+#img7 { bottom: 15%; left: 15%; }
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#btnSi {
+    background-color: white;
+    color: #ff4b5c;
+}
+
+#btnNo {
+    background-color: #ff4b5c;
+    color: white;
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: fall 4s linear infinite;
+    z-index: 0;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSICA -->
+<audio id="musica" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 📸 IMÁGENES -->
+<img src="imagenes/imagen1.jpeg" class="foto" id="img1">
+<img src="imagenes/imagen2.jpeg" class="foto" id="img2">
+<img src="imagenes/imagen3.jpeg" class="foto" id="img3">
+<img src="imagenes/imagen4.jpeg" class="foto" id="img4">
+<img src="imagenes/imagen5.jpeg" class="foto" id="img5">
+<img src="imagenes/imagen6.jpeg" class="foto" id="img6">
+<img src="imagenes/imagen7.jpeg" class="foto" id="img7">
+
+<div class="contenido">
+    <h1>Feliz 9 Meses Mi Amor 💖</h1>
+
+    <p id="contador"></p>
+
+    <p>
+    Desde el primer día supe que eras especial.
+    Gracias por estos meses llenos de amor.
+    </p>
+
+    <p><strong>¿Seguimos sumando muchos más? 💍💙</strong></p>
+
+    <button id="btnSi" onclick="respuestaSi()">Sí 😍</button>
+    <button id="btnNo">No 😢</button>
+
+    <p id="respuesta" class="hidden"></p>
+</div>
+
+<script>
+
+// 🎵 FORZAR REPRODUCCIÓN
+window.addEventListener("load", function() {
+    const audio = document.getElementById("musica");
+
+    audio.play().catch(() => {});
+
+    document.addEventListener("click", function() {
+        audio.play().catch(() => {});
+    }, { once: true });
+});
+
+// 📅 FECHA DE INICIO (CAMBIAR POR LA REAL)
+const fechaInicio = new Date("2025-05-26T00:00:00");
+
+function actualizarContador() {
+    const ahora = new Date();
+    const diferencia = ahora - fechaInicio;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+
+    document.getElementById("contador").innerHTML =
+        "Llevamos juntos: " 
+        + dias + " días, "
+        + horas + " horas, "
+        + minutos + " minutos y "
+        + segundos + " segundos 💞";
+}
+
+setInterval(actualizarContador, 1000);
+actualizarContador();
+
+// 💖 RESPUESTA SI
+function respuestaSi() {
+    const r = document.getElementById("respuesta");
+    r.innerHTML = "Sabía que ibas a decir que sí 😘 Te amo muchísimo ❤️";
+    r.classList.remove("hidden");
+}
+
+// 😈 BOTÓN QUE SE ESCAPA
+const btnNo = document.getElementById("btnNo");
+
+btnNo.addEventListener("mouseover", function() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+
+    btnNo.style.left = x + "px";
+    btnNo.style.top = y + "px";
+});
+
+// ❤️ CORAZONES
+function crearCorazon() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 4000);
+}
+
+setInterval(crearCorazon, 300);
+
+</script>
+
+</body>
+</html>
