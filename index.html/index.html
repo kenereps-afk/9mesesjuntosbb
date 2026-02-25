@@ -1,50 +1,54 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>9 Meses Juntos 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     text-align: center;
     background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    overflow-x: hidden;
 }
 
+/* GALERÍA */
 .galeria {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
+    gap: 12px;
+    margin: 25px 10px;
 }
 
 .foto {
     width: 150px;
-    height: 200
-    px;
+    height: 200px;
     object-fit: cover;
     border-radius: 20px;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
     transition: transform 0.3s;
 }
 
 .foto:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
+/* CONTENIDO CENTRAL */
 .contenido {
-    margin-top: 40px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 20px;
     width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
     color: white;
 }
 
@@ -59,6 +63,7 @@ h1 {
     margin: 15px 0;
 }
 
+/* BOTONES */
 button {
     padding: 12px 25px;
     font-size: 16px;
@@ -76,13 +81,14 @@ button {
 #btnNo {
     background-color: #ff4b5c;
     color: white;
-    position: absolute;
+    position: relative;
 }
 
 .hidden {
     display: none;
 }
 
+/* CORAZONES */
 .heart {
     position: fixed;
     color: red;
@@ -95,15 +101,41 @@ button {
     0% { transform: translateY(-10vh); opacity: 1; }
     100% { transform: translateY(110vh); opacity: 0; }
 }
+
+/* 📱 RESPONSIVE PARA CELULAR */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .contenido {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .foto {
+        width: 100px;
+        height: 140px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 18px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- MÚSICA -->
 <audio id="musica" autoplay loop>
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
+<!-- GALERÍA -->
 <div class="galeria">
     <img src="imagen1.jpeg" class="foto">
     <img src="imagen2.jpeg" class="foto">
@@ -114,14 +146,15 @@ button {
     <img src="imagen7.jpeg" class="foto">
 </div>
 
+<!-- CONTENIDO -->
 <div class="contenido">
     <h1>Feliz 9 Meses Mi Amor 💖</h1>
 
     <p id="contador"></p>
 
     <p>
-    Desde el primer día supe que eras especial.
-    Gracias por estos meses llenos de amor.
+        Desde el primer día supe que eras especial.
+        Gracias por estos meses llenos de amor.
     </p>
 
     <p><strong>¿Seguimos sumando muchos más? 💍💙</strong></p>
@@ -133,6 +166,8 @@ button {
 </div>
 
 <script>
+
+/* FORZAR MÚSICA */
 window.addEventListener("load", function() {
     const audio = document.getElementById("musica");
     audio.play().catch(() => {});
@@ -141,6 +176,7 @@ window.addEventListener("load", function() {
     }, { once: true });
 });
 
+/* CONTADOR */
 const fechaInicio = new Date("2025-05-26T00:00:00");
 
 function actualizarContador() {
@@ -163,22 +199,26 @@ function actualizarContador() {
 setInterval(actualizarContador, 1000);
 actualizarContador();
 
+/* RESPUESTA */
 function respuestaSi() {
     const r = document.getElementById("respuesta");
     r.innerHTML = "Sabía que ibas a decir que sí 😘 Te amo muchísimo ❤️";
     r.classList.remove("hidden");
 }
 
+/* BOTÓN QUE SE ESCAPA */
 const btnNo = document.getElementById("btnNo");
 
 btnNo.addEventListener("mouseover", function() {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
 
+    btnNo.style.position = "absolute";
     btnNo.style.left = x + "px";
     btnNo.style.top = y + "px";
 });
 
+/* CORAZONES */
 function crearCorazon() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -193,10 +233,12 @@ function crearCorazon() {
 }
 
 setInterval(crearCorazon, 300);
+
 </script>
 
 </body>
 </html>
+
 
 
 
