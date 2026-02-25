@@ -13,6 +13,7 @@ body {
     text-align: center;
     background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
     overflow: hidden;
+    position: relative; /* 🔥 ARREGLO */
 }
 
 .contenido {
@@ -104,12 +105,10 @@ button {
 
 <body>
 
-<!-- 🎵 MUSICA -->
 <audio id="musica" autoplay loop>
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 📸 IMÁGENES -->
 <img src="imagen1.jpeg" class="foto" id="img1">
 <img src="imagen2.jpeg" class="foto" id="img2">
 <img src="imagen3.jpeg" class="foto" id="img3">
@@ -137,19 +136,14 @@ button {
 </div>
 
 <script>
-
-// 🎵 FORZAR REPRODUCCIÓN
 window.addEventListener("load", function() {
     const audio = document.getElementById("musica");
-
     audio.play().catch(() => {});
-
     document.addEventListener("click", function() {
         audio.play().catch(() => {});
     }, { once: true });
 });
 
-// 📅 FECHA DE INICIO (CAMBIAR POR LA REAL)
 const fechaInicio = new Date("2025-05-26T00:00:00");
 
 function actualizarContador() {
@@ -172,14 +166,12 @@ function actualizarContador() {
 setInterval(actualizarContador, 1000);
 actualizarContador();
 
-// 💖 RESPUESTA SI
 function respuestaSi() {
     const r = document.getElementById("respuesta");
     r.innerHTML = "Sabía que ibas a decir que sí 😘 Te amo muchísimo ❤️";
     r.classList.remove("hidden");
 }
 
-// 😈 BOTÓN QUE SE ESCAPA
 const btnNo = document.getElementById("btnNo");
 
 btnNo.addEventListener("mouseover", function() {
@@ -190,7 +182,6 @@ btnNo.addEventListener("mouseover", function() {
     btnNo.style.top = y + "px";
 });
 
-// ❤️ CORAZONES
 function crearCorazon() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -205,12 +196,11 @@ function crearCorazon() {
 }
 
 setInterval(crearCorazon, 300);
-
 </script>
 
 </body>
-
 </html>
+
 
 
 
