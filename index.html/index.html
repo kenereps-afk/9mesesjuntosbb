@@ -12,13 +12,30 @@ body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
     background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-    overflow: hidden;
-    position: relative; /* 🔥 ARREGLO */
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.foto {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s;
+}
+
+.foto:hover {
+    transform: scale(1.1);
 }
 
 .contenido {
-    position: relative;
-    z-index: 10;
     margin-top: 40px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
@@ -40,29 +57,6 @@ h1 {
     font-weight: 600;
     margin: 15px 0;
 }
-
-.foto {
-    position: absolute;
-    width: 150px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
-    transition: transform 0.3s;
-    z-index: 1;
-}
-
-.foto:hover {
-    transform: scale(1.1);
-}
-
-#img1 { top: 5%; left: 3%; }
-#img2 { top: 75%; left: 5%; }
-#img3 { top: 10%; right: 3%; }
-#img4 { bottom: 5%; right: 5%; }
-#img5 { top: 35%; left: 2%; }
-#img6 { top: 40%; right: 2%; }
-#img7 { bottom: 15%; left: 15%; }
 
 button {
     padding: 12px 25px;
@@ -109,13 +103,15 @@ button {
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<img src="imagen1.jpeg" class="foto" id="img1">
-<img src="imagen2.jpeg" class="foto" id="img2">
-<img src="imagen3.jpeg" class="foto" id="img3">
-<img src="imagen4.jpeg" class="foto" id="img4">
-<img src="imagen5.jpeg" class="foto" id="img5">
-<img src="imagen6.jpeg" class="foto" id="img6">
-<img src="imagen7.jpeg" class="foto" id="img7">
+<div class="galeria">
+    <img src="imagen1.jpeg" class="foto">
+    <img src="imagen2.jpeg" class="foto">
+    <img src="imagen3.jpeg" class="foto">
+    <img src="imagen4.jpeg" class="foto">
+    <img src="imagen5.jpeg" class="foto">
+    <img src="imagen6.jpeg" class="foto">
+    <img src="imagen7.jpeg" class="foto">
+</div>
 
 <div class="contenido">
     <h1>Feliz 9 Meses Mi Amor 💖</h1>
